@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { data } from './data'
+import { useState, useEffect } from "react";
+import { data } from "./data";
 // import reactLogo from './assets/react.svg' - keep to view format for importing assets
 
 function App() {
@@ -10,33 +10,38 @@ function App() {
   */
   const [score, setScore] = useState(0);
   const [high, setHigh] = useState(0);
-//  const high = 0;
+  const [values, setValues] = useState([]);
 
   useEffect(() => {
-    if ( high < score )
-    { setHigh(score) }
-    }, [score]);
-  
+    if (high < score) {
+      setHigh(score);
+    }
+  }, [score]);
 
- function handleClick() {
-  setScore((prevCount) => prevCount + 1); 
- }
+  function handleClick(id) {
+    setScore((prevCount) => prevCount + 1);
+    setValues([...values, id]);
+  }
 
   return (
     <>
       <header>
         Current Score: {score} High Score: {high}
       </header>
-      <body>
-        {data.map(box=> 
-         <button 
-          key={box.id}
-          onClick={handleClick} 
-          >{box.id}</button> 
-        )} 
-      </body>
+      <div>
+        {data.map((box) => (
+          <button
+            key={box.id}
+            value={box.id}
+            onClick={() => handleClick(box.id)}
+          >
+            {box.id}
+          </button>
+        ))}
+      </div>
+      <div>{values}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
