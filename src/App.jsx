@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Shuffle, Card } from "./data";
+import { Shuffle, Card } from "./Card";
 
 function App() {
   const [score, setScore] = useState(0);

@@ -30,7 +30,6 @@ export function Card({ url }) {
       {data ? (
         <div>
           <div>{data.name}</div>
-          <img src={data.sprites.front_default}></img>
         </div>
       ) : (
         "Loading..."
@@ -38,3 +37,6 @@ export function Card({ url }) {
     </>
   );
 }
+
+// doesn't work unless added after react starts
+// <img src={data.sprites.front_default}></img>
