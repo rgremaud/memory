@@ -1,37 +1,21 @@
 import { useState, useEffect } from "react";
-import { shuffle } from "./data";
-// import reactLogo from './assets/react.svg' - keep to view format for importing assets
-
-function Image({ pokemon }) {
-  const [info, setInfo] = useState(null);
-
-  useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-      .then((response) => response.json())
-      .then((json) => setInfo(json))
-      .catch((error) => console.error(error));
-  }, []);
-
-  const imageUrl = info.sprites.front_default;
-
-  return imageUrl;
-}
+import { Shuffle, Card } from "./data";
 
 function App() {
   const [score, setScore] = useState(0);
   const [high, setHigh] = useState(0);
   const [values, setValues] = useState([]);
   const data = [
-    { id: 1, image: Image("pikachu") },
-    { id: 2, image: "" },
-    { id: 3, image: "" },
-    { id: 4, image: "" },
-    { id: 5, image: "" },
-    { id: 6, image: "" },
-    { id: 7, image: "" },
-    { id: 8, image: "" },
-    { id: 9, image: "" },
-    { id: 10, image: "" },
+    { id: 1, url: "https://pokeapi.co/api/v2/pokemon/pikachu" },
+    { id: 2, url: "https://pokeapi.co/api/v2/pokemon/snorlax" },
+    { id: 3, url: "https://pokeapi.co/api/v2/pokemon/charmander" },
+    { id: 4, url: "https://pokeapi.co/api/v2/pokemon/bulbasaur" },
+    { id: 5, url: "https://pokeapi.co/api/v2/pokemon/squirtle" },
+    { id: 6, url: "https://pokeapi.co/api/v2/pokemon/ditto" },
+    { id: 7, url: "https://pokeapi.co/api/v2/pokemon/abra" },
+    { id: 8, url: "https://pokeapi.co/api/v2/pokemon/slowpoke" },
+    { id: 9, url: "https://pokeapi.co/api/v2/pokemon/cubone" },
+    { id: 10, url: "https://pokeapi.co/api/v2/pokemon/sandshrew" },
   ];
 
   useEffect(() => {
@@ -48,7 +32,7 @@ function App() {
       setScore(0);
       setValues([]);
     }
-    shuffle(data);
+    Shuffle(data);
   }
 
   return (
@@ -64,7 +48,7 @@ function App() {
             onClick={() => handleClick(box.id)}
           >
             {box.id}
-            {box.image}
+            <Card url={box.url} />
           </button>
         ))}
       </div>
