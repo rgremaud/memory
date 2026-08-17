@@ -16,7 +16,7 @@ function App() {
     { id: 8, url: "https://pokeapi.co/api/v2/pokemon/slowpoke" },
     { id: 9, url: "https://pokeapi.co/api/v2/pokemon/cubone" },
     { id: 10, url: "https://pokeapi.co/api/v2/pokemon/sandshrew" },
-  ];
+  ]; 
 
   useEffect(() => {
     if (high < score) {
@@ -52,7 +52,6 @@ function App() {
           </button>
         ))}
       </div>
-      <div>{values}</div>
     </>
   );
 }

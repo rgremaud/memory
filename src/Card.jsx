@@ -22,8 +22,12 @@ export function Card({ url }) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setData(data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error("Failed to fetch data:", error));
   }, []);
+
+  if (!data) {
+    return <div>Searching for pokemone data...</div>;
+  }
 
   return (
     <>
@@ -39,4 +43,4 @@ export function Card({ url }) {
 }
 
 // doesn't work unless added after react starts
-// <img src={data.sprites.front_default}></img>
+// <img src={data?.sprites.front_default}></img>
